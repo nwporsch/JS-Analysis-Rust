@@ -30,11 +30,20 @@ fn main() {
     //Get arguments
     let args: Vec<String> = env::args().collect();
     let filename = &args[1];
+    let data = read_file(filename); //Passes the pointer to the filename
+
+    println!("{}", data);
+}
+
+/**
+ * read_file: When given a file name it will attempt to read from the file and return it's contents
+ */
+fn read_file(filename : &String) -> String{ //Returns the last line in the function
 
     println!("Reading from file: {}", filename);
 
     //Reading from file and displaying contents
     let data = fs::read_to_string(filename)
         .expect("Unable to read file.");
-    println!("{}", data);
+    data
 }
