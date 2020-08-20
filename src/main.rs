@@ -23,6 +23,18 @@ SOFTWARE.
 
  */
 
+use std::env;
+use std::fs;
+
 fn main() {
-    println!("Hello, world!");
+    //Get arguments
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+
+    println!("Reading from file: {}", filename);
+
+    //Reading from file and displaying contents
+    let data = fs::read_to_string(filename)
+        .expect("Unable to read file.");
+    println!("{}", data);
 }
